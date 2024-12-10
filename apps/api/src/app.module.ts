@@ -1,10 +1,14 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { UserModule } from './user/user.module';
+import { TaskModule } from './task/task.module';
+import { HabitModule } from './habit/habit.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [MongooseModule.forRoot('mongodb://mongoadmin:secret@localhost:27017/miapp?authSource=admin'), TaskModule, UserModule, HabitModule],
+  providers: [],
 })
+
 export class AppModule {}
+
+
